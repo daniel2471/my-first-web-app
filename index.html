@@ -17,9 +17,22 @@
             h2 {
                 color: darkgreen;
                 margin-top: 30px;
-
-        
             }
+
+            .interests {
+                padding: 10px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .interest {
+                
+                padding: 10px;
+                
+            }
+        
+    
 
             @media screen and (max-width: 600px) {
                 body {
@@ -29,6 +42,7 @@
                 h1 {
                     font-size: 30px;
                     padding: 8px;
+                }
 
                     h2 {
                         margin-top: 20px;
@@ -36,6 +50,10 @@
                     p {
                         font-size: 16px;
                         line-height: 1.5;
+                    }
+
+                    .interests {
+                        grid-template-columns: 1fr;
                     }
 
                 }
@@ -48,21 +66,36 @@
         <h1 style="color: blue;">My First Web App</h1>
 
     <p style="color: darkblue;">My name is Daniel and I am interested in cars, computing and football.</p>
+
+<div class="interests">
+    <div class="interest"> 
+
     <h2 title="My interest in cars" style="color: darkgreen;">Cars</h2>
     
     
 
     <p style="color: hsl(0, 100%, 27%);">I have an interest in cars and enjoy learning about different cars, how they work and the technology used in them.</p>
+
+</div>   
+
+<div class="interest"> 
+
     <h2 title="My interest in computing" style="color: darkgreen;">Computing</h2>
 
 
 
     <p style="color: rgba(139, 139, 0, 0.948);">I am interested in computing and enjoy learning about different programming languages, software development, and computer systems.</p>
-    
 
+
+</div>
+
+    
+<div class="interest">
     
     <h2 title="My interest in football" style="color: darkgreen;">Football</h2>
     <p style="color: darkblue;">I am a fan of football and enjoy watching matches, following my favorite teams, and learning about the history and culture of the sport.</p>
+
+</div>   
     
     
 </body>    
