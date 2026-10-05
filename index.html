@@ -18,6 +18,26 @@
             h2 {
                 color: darkgreen;
                 margin-top: 30px;
+            }    
+
+            #contact-form {
+                max-width: 500px;
+                padding: 20px;
+                border: 1px solid #999;
+                border-radius: 8px;
+                background-color: white;
+            }
+
+            #contact-form input, 
+            #contact-form select,
+            #contact-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0 15px;
+                box-sizing: border-box;
+                border: 1px solid #aaa;
+                border-radius: 4px;
+                font-size: 16px;
             }
 
             .interests {
@@ -111,8 +131,11 @@
         <option value="football">Football</option>
     </select><br><br>
     <label for="message">Message:</label><br>
-    <textarea id="message" name="message"></textarea><br><br>
+    <textarea id="message" name="message" rows="5" maxlength="300" 
+        placeholder="Write your message here (max 300 characters)"></textarea><br>
+    <p id="char-count" style="color: darkblue;">0/300 characters</p>
     <input type="submit" value="Submit">
+    <br>     
 </form>
 <p id="form-response" style="color: darkred;"></p>
 <div id="sports-image"></div>
@@ -171,7 +194,15 @@
             sportsImageDiv.appendChild(img);
         }
     });
+        var messageInput = document.getElementById("message");
+        var charCount = document.getElementById("char-count");
+        messageInput.addEventListener("input", function() {
+            var currentLength = messageInput.value.length;
+            charCount.textContent = currentLength + "/300 characters";
+        });
 </script>
+        
+
 
 </body>    
 
