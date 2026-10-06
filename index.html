@@ -139,6 +139,22 @@
 </form>
 <p id="form-response" style="color: darkred;"></p>
 <div id="sports-image"></div>
+
+<h2>Cat Temperament</h2>
+<select id="cat-breed">
+    <option value="">Select a breed</option>
+    <option value="Japanese Bobtail">Japanese Bobtail</option>
+    <option value="Kurilian">Kurilian</option>
+    <option value="Siamese">Siamese</option>
+    <option value="Turkish Angora">Turkish Angora</option>
+
+    
+    
+    </select>
+    
+    <div id="cat-info"></div>
+    
+
 <script>
     document.getElementById("contact-form").addEventListener("submit", function(event) {
         event.preventDefault();
@@ -200,6 +216,43 @@
             var currentLength = messageInput.value.length;
             charCount.textContent = currentLength + "/300 characters";
         });
+
+            document.getElementById("cat-breed").addEventListener("change", function() {
+                var selectedBreed = this.value;
+                var catInfoDiv = document.getElementById("cat-info");
+                catInfoDiv.innerHTML = "";
+
+                if (selectedBreed) {
+                    fetch("cats.json")
+                        .then(response => response.json())
+                        .then(data => {
+
+                            var breedInfo = data.data.data.find(breed => breed.name === selectedBreed);
+                            if (breedInfo) {
+                                
+                                catInfoDiv.innerHTML = `
+                                    <h3>${breedInfo.name}</h3>
+                                    <p><strong>Temperament:</strong> ${breedInfo.temperament}</p>
+                                    <p><strong>Origin:</strong> ${breedInfo.origin}</p>
+                                    <p><strong>Description:</strong> ${breedInfo.description}</p>
+                                `;
+                            } else {
+                                catInfoDiv.textContent = "No information available for this breed.";
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error fetching cat breed information:", error);
+                            catInfoDiv.textContent = "An error occurred while fetching breed information.";
+                        });
+                }
+            });
+        
+
+            
+
+                
+            
+     
 </script>
         
 
